@@ -29,6 +29,7 @@ namespace BaseLightSwitch
         public override string IconFileName => "LightIcon.png";
 
         private AssetBundle modAB;
+        private GameObject loadedPrefab;
 
         private void RegisterCustomLines()
         {
@@ -45,10 +46,7 @@ namespace BaseLightSwitch
             modAB = AssetBundle.LoadFromFile(path);
 
             if (modAB == null) throw new Exception("Light Switch AssetBundle not found! Path: " + path);
-        }
 
-        public override UnityEngine.GameObject GetGameObject()
-        {
             // Load GameObject
             var lightSwitch = modAB.LoadAsset<GameObject>("LightSwitch");
             PrefabUtils.AddBasicComponents(ref lightSwitch, "LightSwitch");
@@ -76,7 +74,12 @@ namespace BaseLightSwitch
 
             var lightToggle = lightSwitch.AddComponent<BaseLightToggle>();
 
-            return lightSwitch;
+            loadedPrefab = lightSwitch;
+        }
+
+        public override UnityEngine.GameObject GetGameObject()
+        {
+            return loadedPrefab;
         }
 
         protected override TechData GetBlueprintRecipe()
