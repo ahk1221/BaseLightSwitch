@@ -10,7 +10,7 @@
     <RootNamespace>BaseLightSwitch</RootNamespace>
     <AssemblyName>BaseLightSwitch</AssemblyName>
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\</ManagedFolder>
-	<SMLHelperFolder>C:\Program Files (x86)\Steam\steamapps\common\Subnautica\QMods\Modding Helper\</SMLHelperFolder>
+    <SMLHelperFolder>C:\Program Files (x86)\Steam\steamapps\common\Subnautica\QMods\Modding Helper\</SMLHelperFolder>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
