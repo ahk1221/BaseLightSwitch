@@ -18,7 +18,7 @@ namespace BaseLightSwitch
 
             var constructable = GetComponent<Constructable>();
 
-            if (!constructable || constructable.constructed)
+            if (constructable != null && constructable.constructed)
             {
                 // Get current light state
                 var isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
