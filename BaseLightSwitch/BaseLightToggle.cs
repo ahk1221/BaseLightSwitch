@@ -20,9 +20,19 @@ namespace BaseLightSwitch
 
             if (!constructable || constructable.constructed)
             {
+                // Get current light state
                 var isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
                 var isLightsOn = (bool)isLightsOnField.GetValue(subRoot);
 
+                // Play sound depending on state
+#pragma warning disable CS0618
+                if (isLightsOn)
+                    FMODUWE.PlayOneShot("event:/sub/cyclops/lights_off", MainCamera.camera.transform.position, 1f);
+                else
+                    FMODUWE.PlayOneShot("event:/sub/cyclops/lights_on", MainCamera.camera.transform.position, 1f);
+#pragma warning restore CS0618
+
+                // Update light state
                 subRoot.ForceLightingState(!isLightsOn);
             }
         }
