@@ -55,7 +55,7 @@ namespace BaseLightSwitch
             this.IsLightsOn = !isLightsOn;
             subRoot.ForceLightingState(this.IsLightsOn);
 
-            // Play sound (depending on new light state)
+            // Play sound (depending on new light state). Scraped from : https://github.com/K07H/DecorationsMod/blob/master/Subnautica_AudioAssets.txt
             if (this.IsLightsOn)
                 FMODUWE.PlayOneShot(new FMODAsset() { id = "2103", path = "event:/sub/cyclops/lights_on", name = "5384ec29-f493-4ac1-9f74-2c0b14d61440", hideFlags = HideFlags.None }, MainCamera.camera.transform.position, 1f);
             else
