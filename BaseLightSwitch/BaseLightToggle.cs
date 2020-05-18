@@ -74,7 +74,7 @@ namespace BaseLightSwitch
             reticle.SetInteractText("ToggleLightsBase");
         }
 
-        /// <summary>This function gets called by <see cref="OnProtoSerialize(ProtobufSerializer)"/> when game loads. It restores light state of current base or submarine.</summary>
+        /// <summary>This function gets called by <see cref="OnProtoDeserialize(ProtobufSerializer)"/> when game loads. It restores light state of current base or submarine.</summary>
         public void RestoreLightState()
         {
             if (_lightSwitchSubRoot != null)
