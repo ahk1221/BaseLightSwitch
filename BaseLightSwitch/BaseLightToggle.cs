@@ -22,7 +22,7 @@ namespace BaseLightSwitch
         }
 
         /// <summary>Returns the path to save folder.</summary>
-        private string GetLightSwitchSavePath() => Path.Combine(Path.Combine(@".\SNAppData\SavedGames\", SaveLoadManager.main.GetCurrentSlot()), "BaseLightSwitch");
+        private string GetLightSwitchSavePath() => Path.Combine(Path.Combine(@"./SNAppData/SavedGames/", SaveLoadManager.main.GetCurrentSlot()), "BaseLightSwitch");
 
         /// <summary>Returns the SubRoot object (if light switch is in a base, the BaseRoot is casted into a SubRoot).</summary>
         public SubRoot GetSubRoot()
