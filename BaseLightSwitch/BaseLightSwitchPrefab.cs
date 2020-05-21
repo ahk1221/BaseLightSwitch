@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
@@ -73,6 +71,10 @@ namespace BaseLightSwitch
             MonoBehaviour.DestroyImmediate(rb);
 
             var lightToggle = lightSwitch.AddComponent<BaseLightToggle>();
+
+            var prefabId = lightSwitch.GetComponent<PrefabIdentifier>();
+            if (prefabId == null) prefabId = lightSwitch.AddComponent<PrefabIdentifier>();
+            prefabId.ClassId = "LightSwitch";
 
             loadedPrefab = lightSwitch;
         }
