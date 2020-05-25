@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BaseLightSwitch
 {
-    public class BaseLightToggle : HandTarget, IHandTarget //, IProtoEventListener
+    public class BaseLightToggle : HandTarget, IHandTarget
     {
         private FieldInfo _isLightsOnField;
 
