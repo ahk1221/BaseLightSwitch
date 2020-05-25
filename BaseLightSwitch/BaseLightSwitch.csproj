@@ -49,6 +49,9 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\SMLHelper\Dependencies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="0Harmony-1.2.0.1">
+      <HintPath>..\..\SMLHelper\Dependencies\0Harmony-1.2.0.1.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>D:\Steam Library\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
@@ -63,6 +66,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SubRootFixer.cs" />
+    <Compile Include="SubRootRestoreLightsState.cs" />
     <Compile Include="BaseLightSwitchPrefab.cs" />
     <Compile Include="BaseLightToggle.cs" />
     <Compile Include="Main.cs" />
