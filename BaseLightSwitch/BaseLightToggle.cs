@@ -1,19 +1,16 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Text;
-using UnityEngine;
-
-namespace BaseLightSwitch
+﻿namespace BaseLightSwitch
 {
+    using System.IO;
+    using System.Reflection;
+    using System.Text;
+    using UnityEngine;
+
     public class BaseLightToggle : HandTarget, IHandTarget
     {
-        private FieldInfo _isLightsOnField;
+        // Get light state field
+        private static readonly FieldInfo _isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        public BaseLightToggle()
-        {
-            // Get light state field
-            this._isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
-        }
+        public BaseLightToggle() { }
 
         /// <summary>Returns the SubRoot object (if light switch is in a base, the BaseRoot is casted into a SubRoot).</summary>
         public SubRoot GetSubRoot()
@@ -40,7 +37,7 @@ namespace BaseLightSwitch
             if (constructable == null || !constructable.constructed) return; // Return if light switch has not been built
 
             // Get current light state
-            var isLightsOn = (bool)this._isLightsOnField.GetValue(subRoot);
+            var isLightsOn = (bool)_isLightsOnField.GetValue(subRoot);
 
             // Set new light state
             isLightsOn = !isLightsOn;
@@ -62,7 +59,11 @@ namespace BaseLightSwitch
 
             var reticle = HandReticle.main;
             reticle.SetIcon(HandReticle.IconType.Hand, 1f);
+#if NAUTILUS
+            reticle.SetText(HandReticle.TextType.Hand, "ToggleLightsBase", true, GameInput.Button.LeftHand);
+#else // SML Helper (Living Large update)
             reticle.SetInteractText("ToggleLightsBase");
+#endif
         }
     }
 }

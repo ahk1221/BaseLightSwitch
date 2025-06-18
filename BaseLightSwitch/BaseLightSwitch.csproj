@@ -1,77 +1,116 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{068333C6-A4F3-4CBB-9568-236E59813E7D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BaseLightSwitch</RootNamespace>
-    <AssemblyName>BaseLightSwitch</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Assembly-CSharp-firstpass_publicized">
-      <HintPath>..\..\SMLHelper\Dependencies\Assembly-CSharp-firstpass_publicized.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp_publicized">
-      <HintPath>..\..\SMLHelper\Dependencies\Assembly-CSharp_publicized.dll</HintPath>
-    </Reference>
-    <Reference Include="SMLHelper">
-      <HintPath>D:\Steam Library\steamapps\common\Subnautica\QMods\Modding Helper\SMLHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\SMLHelper\Dependencies\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="0Harmony-1.2.0.1">
-      <HintPath>..\..\SMLHelper\Dependencies\0Harmony-1.2.0.1.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>D:\Steam Library\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\Steam Library\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\Steam Library\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\SMLHelper\Dependencies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="SubRootFixer.cs" />
-    <Compile Include="SubRootRestoreLightsState.cs" />
-    <Compile Include="BaseLightSwitchPrefab.cs" />
-    <Compile Include="BaseLightToggle.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">DebugNautilus</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>BaseLightSwitch</RootNamespace>
+		<AssemblyName>BaseLightSwitch</AssemblyName>
+		<TargetFramework>net472</TargetFramework>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<FileAlignment>512</FileAlignment>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ErrorReport>prompt</ErrorReport>
+		<LangVersion>11.0</LangVersion>
+		<Copyright>Copyright ©  2018</Copyright>
+		<PackageProjectUrl>https://github.com/ahk1221/BaseLightSwitch</PackageProjectUrl>
+		<Description>A Subnautica mod. It adds a new buildable allowing you to turn lights OFF or ON in any base or cyclops!</Description>
+		<Authors>ahk1221 (original author), OSubMarin (maintenance and enhancements)</Authors>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AssemblyVersion>2.1.0.0</AssemblyVersion>
+		<FileVersion>2.1.0.0</FileVersion>
+		<Version>2.1.0</Version>
+		<Configurations>Debug;Release;DebugNautilus;ReleaseNautilus</Configurations>
+		<SubnauticaFolder>C:\Program Files (x86)\Steam\steamapps\common\Subnautica</SubnauticaFolder>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugNautilus|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\DebugNautilus\</OutputPath>
+		<DefineConstants>DEBUG;TRACE;NAUTILUS</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<WarningLevel>2</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseNautilus|AnyCPU'">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\ReleaseNautilus\</OutputPath>
+		<DefineConstants>TRACE;NAUTILUS</DefineConstants>
+		<WarningLevel>2</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- Publicized version of Assembly-CSharp-firstpass.dll (you can use tools like BepInEx or https://github.com/CabbageCrow/AssemblyPublicizer to publicize assemblies). -->
+		<Reference Include="Assembly-CSharp-firstpass_publicized">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\publicized\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<!-- Publicized version of Assembly-CSharp.dll (you can use tools like BepInEx or https://github.com/CabbageCrow/AssemblyPublicizer to publicize assemblies). -->
+		<Reference Include="Assembly-CSharp_publicized">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\publicized\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<!-- BepInEx -->
+		<Reference Include="BepInEx">
+			<HintPath>$(SubnauticaFolder)\BepInEx\core\BepInEx.dll</HintPath>
+		</Reference>
+		<!-- Harmony -->
+		<Reference Include="0Harmony">
+			<HintPath>$(SubnauticaFolder)\BepInEx\core\0Harmony.dll</HintPath>
+		</Reference>
+		<!-- System -->
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Xml" />
+		<!-- Unity -->
+		<Reference Include="UnityEngine">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(SubnauticaFolder)\Subnautica_Data\Managed\UnityEngine.UI.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<!-- SML Helper (Living Large update) -->
+	<ItemGroup Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Release'">
+		<Reference Include="SMLHelper">
+			<HintPath>$(SubnauticaFolder)\BepInEx\plugins\Modding Helper\SMLHelper.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<!-- Nautilus -->
+	<ItemGroup Condition="'$(Configuration)'=='DebugNautilus' Or '$(Configuration)'=='ReleaseNautilus'">
+		<Reference Include="Nautilus">
+			<HintPath>$(SubnauticaFolder)\BepInEx\plugins\Nautilus\Nautilus.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="SubRootFixer.cs" />
+		<Compile Include="SubRootRestoreLightsState.cs" />
+		<Compile Include="BaseLightSwitchPrefab.cs" />
+		<Compile Include="BaseLightToggle.cs" />
+		<Compile Include="Main.cs" />
+	</ItemGroup>
 </Project>

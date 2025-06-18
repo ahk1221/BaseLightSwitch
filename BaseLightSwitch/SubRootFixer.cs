@@ -6,6 +6,9 @@
 
     public class SubRootFixer
     {
+        // Get light state field
+        private static readonly FieldInfo _isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
+
         public static void OnProtoSerialize_Postfix(SubRoot __instance, ProtobufSerializer serializer)
         {
             // Get base/cyclops prefab ID
@@ -18,8 +21,7 @@
                 Directory.CreateDirectory(saveFolderPath);
 
             // Get base/cyclops lights state
-            FieldInfo isLightsOnField = typeof(SubRoot).GetField("subLightsOn", BindingFlags.Instance | BindingFlags.NonPublic);
-            bool isLightsOn = (bool)isLightsOnField.GetValue(__instance);
+            bool isLightsOn = (bool)_isLightsOnField.GetValue(__instance);
 
             // Save base/cyclops lights state
             File.WriteAllText(Path.Combine(saveFolderPath, "lightsstate_" + prefabId.Id + ".txt"), isLightsOn ? "1" : "0", Encoding.UTF8);
@@ -44,7 +46,7 @@
             bool savedLightsState = (string.IsNullOrEmpty(savedData) || savedData != "0");
 
             // Attach a small component that will restore base/cyclops lights state
-            __instance.gameObject.AddComponent<SubRootRestoreLightsState>().IsLightsOn = savedLightsState;
+            __instance.gameObject.EnsureComponent<SubRootRestoreLightsState>().IsLightsOn = savedLightsState;
         }
     }
 }
